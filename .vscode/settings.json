@@ -1,0 +1,29 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Alt Catppuccin Mocha",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "editor.fontFamily": "Menlo",
+    "[dockerfile]": {
+        "editor.fontSize": 14,
+    },
+    "[dockercompose]": {
+        "editor.fontSize": 14,
+    },
+    "[python]": {
+        "editor.fontSize": 14,
+    },
+    "[json]": {
+        "editor.fontSize": 14,
+    },
+    "[yaml]": {
+        "editor.fontSize": 14,
+
+    },
+    "java.compile.nullAnalysis.mode": "automatic",
+}

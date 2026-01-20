@@ -1,0 +1,36 @@
+{
+	"name": "☕️ Java Development Environment",
+
+	"dockerComposeFile": "compose.yml",
+	"service": "java-workspace",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"GitHub.copilot",
+				"esbenp.prettier-vscode",
+				"ms-vscode.vscode-node-azure-pack",
+				"vallyscode.crayons",
+				"vscjava.vscode-java-pack"
+			]
+		}
+	},
+    "remoteEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+		"MODEL_RUNNER_HOST": "http://model-runner.docker.internal"
+    },
+	"forwardPorts": [8888],
+   	"mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached"
+    ],
+	"remoteUser": "${localEnv:USER}",
+	// Run commands after the container is created.
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} ; sudo chmod 666 /var/run/docker.sock;"
+
+}

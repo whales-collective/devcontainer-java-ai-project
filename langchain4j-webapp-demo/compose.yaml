@@ -1,0 +1,30 @@
+services:
+
+
+  web-app:
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      HTTP_PORT: 8888
+      # host.docker.internal: listening the host from the container
+    ports:
+      - 8888:8888
+    develop:
+      watch:
+        - action: sync
+          path: ./webroot
+          target: ./webroot
+        - action: rebuild
+          path: ./src
+          
+    models:
+      chat-agent:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_RUNNER_CHAT_MODEL
+
+models:
+  chat-agent:
+    model: hf.co/qwen/qwen2.5-coder-1.5b-instruct-gguf:q4_k_m 
+

@@ -1,0 +1,30 @@
+services:
+
+  java-workspace:
+    build:
+      context: .
+      platforms:
+        #- "linux/amd64"
+        - "linux/arm64"
+      dockerfile: Dockerfile
+      args:
+        - USER_NAME=${USER}
+        - JAVA_VERSION=21
+    
+    network_mode: "host" 
+
+    volumes:
+      - ../..:/workspaces:cached      
+    command: sleep infinity
+
+    models:
+      chat-agent:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_RUNNER_CHAT_MODEL
+
+models:
+  chat-agent:
+    model: hf.co/qwen/qwen2.5-coder-1.5b-instruct-gguf:q4_k_m 
+      
+
+
