@@ -3,7 +3,7 @@
 
 	"dockerComposeFile": "compose.yml",
 	"service": "java-workspace",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/workspaces",
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {}
 	},
